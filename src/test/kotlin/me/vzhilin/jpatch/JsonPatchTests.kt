@@ -1,7 +1,9 @@
+package me.vzhilin.jpatch
+
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
 import kotlin.test.Test
-import kotlin.text.replace
+import kotlin.test.assertEquals
 
 class JsonPatchTests {
     @Test
@@ -85,18 +87,18 @@ class JsonPatchTests {
     }
 
     fun testRemoveAt(current: String, path: String, expect: String) {
-        kotlin.test.assertEquals(pj(expect), pj(current).removeAt(path))
+        assertEquals(pj(expect), pj(current).removeAt(path))
     }
 
     fun testAddAt(current: String, path: String, e: String, expect: String) {
-        kotlin.test.assertEquals(pj(expect), pj(current).addAt(path, pj(e)))
+        assertEquals(pj(expect), pj(current).addAt(path, pj(e)))
     }
 
     fun testReplaceAt(current: String, path: String, e: String, expect: String) {
-        kotlin.test.assertEquals(pj(expect), pj(current).replaceAt(path, pj(e)))
+        assertEquals(pj(expect), pj(current).replaceAt(path, pj(e)))
     }
 
     fun pj(json: String): JsonElement {
-        return Json.parseToJsonElement(json.replace('\'', '"'))
+        return Json.Default.parseToJsonElement(json.replace('\'', '"'))
     }
 }
