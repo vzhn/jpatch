@@ -1,5 +1,8 @@
 # JPatch
+[![Kotlin](https://img.shields.io/badge/kotlin-2.2.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
+
 Routines for immutable `JsonElement` patching
+
 
 ```kotlin
 fun JsonElement.addAt(path: String, e: JsonElement): JsonElement 
